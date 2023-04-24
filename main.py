@@ -1,13 +1,15 @@
+import time
+
 # Lav pecs med diske
-pec_1 = [6, 5, 4, 3, 2, 1]
-pec_2 = []
-pec_3 = []
+peg_1 = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+peg_2 = []
+peg_3 = []
 
 # Print starten
 print(
-    "\nPec 1:", pec_1, 
-    "\nPec 2:", pec_2, 
-    "\nPec 3:", pec_3
+    "\nPeg 1:", peg_1, 
+    "\nPeg 2:", peg_2, 
+    "\nPeg 3:", peg_3
     )
 
 # Lav funktion til at flytte diskene
@@ -16,11 +18,16 @@ def move_function(n, source, target, auxiliary):
         move_function(n-1, source, auxiliary, target)
         target.append(source.pop())
         print(
-            "\nPec 1:", pec_1, 
-            "\nPec 2:", pec_2, 
-            "\nPec 3:", pec_3
+            "\nPeg 1:", peg_1, 
+            "\nPeg 2:", peg_2, 
+            "\nPeg 3:", peg_3
             )
         move_function(n-1, auxiliary, target, source)
 
 # Udfør funktionen
-move_function(len(pec_1), pec_1, pec_3, pec_2)
+start = time.time()
+move_function(len(peg_1), peg_1, peg_3, peg_2)
+end = time.time()
+
+time = (end-start) * 1000
+print("Time (ms):", time)
